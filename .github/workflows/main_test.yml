@@ -32,8 +32,8 @@ jobs:
         run: npm run test
         
   run-cypress-tests: #src: https://docs.cypress.io/guides/continuous-integration/github-actions
-    name: cypress tests
-    runs-on: widows-latest # docs set this to ubuntu-latest. Should compile with windows since we run our tests on windows I think
+    name: Cypress Tests
+    runs-on: windows-latest # docs set this to ubuntu-latest. Should compile with windows since we run our tests on windows I think
 
     steps:
       #On the main branch
