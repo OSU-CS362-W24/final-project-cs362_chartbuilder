@@ -1,18 +1,16 @@
 # Name of this action
-name: Run Unit Tests
+name: Run Unit Tests 
 
 # Event triggers on pull request event
-on: pull_request
+on: push #pull-request was originally here but I think would be more appropriate to set off when pushing to main, no?
 
 # The jobs this action will run. You can write as many jobs as you want.
-# For more detail on this section visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs
 jobs:
   # ID of the job
-  run-jest-tests:
+  run-jest-tests: # src: https://medium.com/codex/set-up-automatic-testing-2507dfb94cbe
     # Name of the job as it will be displayed in GitHub
     name: Jest Tests
-    # Machine which this action will be run on. For a list of all the machines available/how to run on self hosted machine visit
-    # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    # Machine which this action will be run on.
     runs-on: windows-latest
 
     # Steps this job must take to complete
@@ -21,8 +19,7 @@ jobs:
       - name: Checkout under $GITHUB_WORKSPACE
         uses: actions/checkout@main
 
-      # Specify which version of Node this project is using. For more information visit.
-      # https://docs.github.com/en/actions/guides/building-and-testing-nodejs#specifying-the-nodejs-version
+      # Specify which version of Node this project is using.
       - name: Set up NodeJS
         uses: actions/setup-node@v1
         with:
@@ -33,3 +30,21 @@ jobs:
 
       - name: Run Jest Tests
         run: npm run test
+        
+  run-cypress-tests: #src: https://docs.cypress.io/guides/continuous-integration/github-actions
+    name: cypress tests
+    runs-on: widows-latest # docs set this to ubuntu-latest. Should compile with windows since we run our tests on windows I think
+
+    steps:
+      #On the main branch
+      - name: Checkout under $GITHUB_WORKSPACE
+        uses: actions/checkout@main #built-in github command
+        
+      # Run Cypress through their github test compiler page to check our code
+      - name: Cypress run
+        uses: cypress-io/github-action@v2 #cypress repo linked in their docs since we can't user serve for this action
+        with:
+          build: npm run build
+          start: npm start
+
+        
