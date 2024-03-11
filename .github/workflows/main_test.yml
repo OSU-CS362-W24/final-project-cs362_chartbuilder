@@ -1,10 +1,7 @@
-# Name of this action
-name: Run Unit Tests 
+name: Run Unit Tests
 
-# Event triggers on pull request event
-on: push #pull-request was originally here but I think would be more appropriate to set off when pushing to main, no?
+on: push
 
-# The jobs this action will run. You can write as many jobs as you want.
 jobs:
   # ID of the job
   run-jest-tests: # src: https://medium.com/codex/set-up-automatic-testing-2507dfb94cbe
@@ -31,20 +28,16 @@ jobs:
       - name: Run Jest Tests
         run: npm run test
         
-  run-cypress-tests: #src: https://docs.cypress.io/guides/continuous-integration/github-actions
-    name: Cypress Tests
+  run-cypress-tests: # src: https://docs.cypress.io/guides/continuous-integration/github-actions
     runs-on: windows-latest # docs set this to ubuntu-latest. Should compile with windows since we run our tests on windows I think
-
     steps:
-      #On the main branch
-      - name: Checkout under $GITHUB_WORKSPACE
-        uses: actions/checkout@main #built-in github command
-        
-      # Run Cypress through their github test compiler page to check our code
+      - name: Checkout
+        uses: actions/checkout@main # built in Github Command to start in main branch
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v2 #cypress repo linked in their docs since we can't user serve for this action
+        uses: cypress-io/github-action@v6 # cypress repo linked in their docs since we can't user serve for this action
         with:
           build: npm run build
           start: npm start
-
         
