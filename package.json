@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "CS 362 Final Project",
   "scripts": {
+    "test": "jest"
     "cy:open": "cypress open",
     "build": "webpack",
     "start": "webpack serve --open"
