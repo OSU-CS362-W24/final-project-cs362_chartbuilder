@@ -1,7 +1,7 @@
 {
-  "name": "ci-cd",
+  "name": "final-project",
   "version": "1.0.0",
-  "description": "Continuous Integration and Continuous Delivery with GitHub Actions",
+  "description": "Write jest and cypress tests that automatically run through a github pipeline before merging into main",
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
