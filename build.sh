@@ -6,4 +6,4 @@
 
 mkdir build/
 rm -rf build/*
-cp -r todos/*.html todos/*.css todos/*.js todos/fontawesome build/
+cp -r todos/*.html src/*.css src/*.js src/fontawesome build/
