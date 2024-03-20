@@ -10,6 +10,24 @@ var loadCurrentChartData = require('./chartStorage')
 //     results = saveChart(testData)
 //     expect(charts).toContain(chart)
 // })
-test("currentchart is called", function(){
+test("LoadCurrentChartData is called", function(){
     expect(loadCurrentChartData).toBeDefined()
 })
+test("LoadCurrentChartData returns data for the current chart", function(){
+    expect(loadCurrentChartData).toBeInstanceOf(Object)
+})
+test("updateCurrentChartData is called",function(){
+    expect(updateCurrentChartData).toBeDefined()
+})
+test("loadSavedChart is called", function(){
+    expect(loadSavedCharts).toBeDefined()
+})
+test("loadAllSavedChart is called", function(){
+    expect(loadAllSavedCharts).toBeDefined()
+})
+test("saveChart is called", function(){
+    expect(saveChart).toBeDefined()
+})
+// test("loadSavedChart loads and returns a specifi chart from the array of saved charts",function(){
+
+// })
