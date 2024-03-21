@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Chart Generation Tests', () => {
   it('Generate chart', () => {
     cy.visit('/') //Should be changed to a generic variable later
     cy.findByText("Line").click()
