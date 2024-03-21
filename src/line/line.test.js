@@ -17,16 +17,20 @@ function initDomFromFiles(htmlPath, jsPath){
    })
 }
 
-test('clicking the "add values" button adds input boxes for each click', async function() {
+test('clicking the "add values" button adds 2 input boxes when clicked', async function() {
    // Arrange:
    initDomFromFiles(`${__dirname}/line.html`, `${__dirname}/line.js`)
 
    const addValButton = domTesting.getByRole(document, "button", { name: "+" })
 
+   const valueInputsBefore = domTesting.queryAllByRole(document, 'spinbutton')
+   expect(valueInputsBefore).toHaveLength(2)
+
+   // Act: 
    const user = userEvent.setup()
    await user.click(addValButton)
 
-   const valueInputs = domTesting.queryAllByRole(document, 'spinbutton')
-
-   expect(valueInputs).toHaveLength(4)
+   // Assert:
+   const valueInputsAfter = domTesting.queryAllByRole(document, 'spinbutton')
+   expect(valueInputsAfter).toHaveLength(4)
 })
