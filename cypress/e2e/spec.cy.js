@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Chart Generation Tests', () => {
   it('Generate chart', () => {
     cy.visit('/') //Should be changed to a generic variable later
     cy.findByText("Line").click()
@@ -67,6 +67,7 @@ describe('template spec', () => {
     cy.findByLabelText('X label').should('have.value', 'Cats');
     cy.findByLabelText('Y label').should('have.value', 'Dogs');
   })
+<<<<<<< HEAD
 })
 
 
@@ -85,6 +86,24 @@ describe('template spec', () => {
     }
 
       //Populate variables section of graph with numbers. Done in a very icky way because they're auto-generated buttons with no discernable label
+=======
+
+
+  it('Check that a chart can be saved to the gallery', () => {
+      //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
+      cy.visit('/') //Should be changed to a generic variable later
+      cy.findByText("Scatter").click()
+      cy.findByLabelText('Chart title').type('Age vs. Height');
+      cy.findByLabelText('X label').type('Age');
+      cy.findByLabelText('Y label').type('Height');
+
+      //create buttons with + button and populate them with data as per video
+      for (let i = 0; i < 4; i++) {
+      cy.findByRole("button", {name: "+"}).click();
+      }
+    
+      //Populate variables section of graph with numbers. Done in a very icky way because they're auto-generated buttons w    ith no discernable label
+>>>>>>> refs/remotes/origin/justin
       //Would absolutely go better in a loop but I couldn't find a pattern in the y-value nums
       cy.get(`:nth-child(${4}) > .x-value-input`).type(1);
       cy.get(`:nth-child(${5}) > .y-value-input`).type(3);
@@ -96,6 +115,7 @@ describe('template spec', () => {
       cy.get(`:nth-child(${11}) > .y-value-input`).type(25);
       cy.get(`:nth-child(${12}) > .x-value-input`).type(5);
       cy.get(`:nth-child(${13}) > .y-value-input`).type(40);
+<<<<<<< HEAD
 
      // Generates and saves the chart
     cy.findByRole("button", {name: "Generate chart"}).click();
@@ -111,3 +131,20 @@ describe('template spec', () => {
     cy.findByLabelText('Y label').should('have.value', 'Height');
   })
 })
+=======
+    
+      // Generates the chart and checks it exists on the scatter plot page
+      cy.findByRole("button", {name: "Generate chart"}).click();
+      cy.get('img', {name: 'chart-img'}).should('exist')
+
+      // Saves the chart to gallery
+      cy.findByRole("button", {name: "Save chart"}).click();
+
+      // Navigates to the Gallery page
+      cy.findByRole("link", {name: "Gallery"}).click();
+
+      // Checks that the chart image exists on the Gallery page
+      cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present 
+  })
+})
+>>>>>>> refs/remotes/origin/justin
