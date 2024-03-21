@@ -34,3 +34,24 @@ test('clicking the "add values" button adds 2 input boxes when clicked', async f
    const valueInputsAfter = domTesting.queryAllByRole(document, 'spinbutton')
    expect(valueInputsAfter).toHaveLength(4)
 })
+
+test('clicking the "add values" button adds input boxes for multiple button clicks', async function() {
+   // Arrange:
+   initDomFromFiles(`${__dirname}/line.html`, `${__dirname}/line.js`)
+
+   const addValButton = domTesting.getByRole(document, "button", { name: "+" })
+
+   const valueInputsBefore = domTesting.queryAllByRole(document, 'spinbutton')
+   expect(valueInputsBefore).toHaveLength(2)
+
+   // Act: 
+   const user = userEvent.setup()
+   await user.click(addValButton)
+   await user.click(addValButton)
+   await user.click(addValButton)
+   await user.click(addValButton)
+
+   // Assert:
+   const valueInputsAfter = domTesting.queryAllByRole(document, 'spinbutton')
+   expect(valueInputsAfter).toHaveLength(10)
+})
