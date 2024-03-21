@@ -15,7 +15,7 @@ jobs:
           node-version: 21
       - run: npm ci
       - run: npm run build
-      - run: ../build.sh
+      - run: ./build.sh
       - run: npm run test:integration
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v3
