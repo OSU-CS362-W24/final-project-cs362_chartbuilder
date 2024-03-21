@@ -19,7 +19,7 @@ jobs:
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v3
         with:
-          name: app.css
+          name: index.html
           path: build
       - if: ${{ inputs.upload-pages-artifact }}
         uses: actions/upload-pages-artifact@v1
