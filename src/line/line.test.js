@@ -105,6 +105,34 @@ test('alerts displated for missing chart data', async function() {
    // Act: 
    const user = userEvent.setup()
 
+   // Types number into one of the number input fields
+   await user.type(valueInputs[0], '1')
+
+   // Click generate chart button
+   await user.click(generateButton)
+
+   // Assert: 
+   // Checks the the spy function was called, meaning alert() was called
+   expect(spy).toHaveBeenCalled()
+})
+
+test('alerts displated for invalid chart data', async function() {
+   // Arrange:
+   initDomFromFiles(`${__dirname}/line.html`, `${__dirname}/line.js`)
+
+   // Finding the number inputs and generate chart button
+   const valueInputs = domTesting.queryAllByRole(document, 'spinbutton')
+   const generateButton = domTesting.getByRole(document, "button", { name: "Generate chart" })
+
+   // Spy on alert()
+   const spy = jest.spyOn(window, 'alert') 
+
+   // Does nothing when the alert should show 
+   spy.mockImplementation(() => {})
+
+   // Act: 
+   const user = userEvent.setup()
+
    // Types letters into the number input fields
    await user.type(valueInputs[0], 'x')
    await user.type(valueInputs[1], 'y')
