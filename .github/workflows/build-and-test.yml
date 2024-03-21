@@ -20,8 +20,8 @@ jobs:
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v3
         with:
-          name: index.html
-          path: build
+          name: build-artifact
+          path: dist
       - if: ${{ inputs.upload-pages-artifact }}
         uses: actions/upload-pages-artifact@v1
         with:
