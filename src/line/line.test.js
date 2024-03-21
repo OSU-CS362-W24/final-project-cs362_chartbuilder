@@ -25,4 +25,8 @@ test('clicking the "add values" button adds input boxes for each click', async f
 
    const user = userEvent.setup()
    await user.click(addValButton)
+
+   const valueInputs = domTesting.queryAllByRole(document, 'spinbutton')
+
+   expect(valueInputs).toHaveLength(4)
 })
