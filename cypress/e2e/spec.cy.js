@@ -67,7 +67,6 @@ describe('Chart Generation Tests', () => {
     cy.findByLabelText('X label').should('have.value', 'Cats');
     cy.findByLabelText('Y label').should('have.value', 'Dogs');
   })
-<<<<<<< HEAD
 })
 
 
@@ -86,9 +85,6 @@ describe('Chart Generation Tests', () => {
     }
 
       //Populate variables section of graph with numbers. Done in a very icky way because they're auto-generated buttons with no discernable label
-=======
-
-
   it('Check that a chart can be saved to the gallery', () => {
       //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
       cy.visit('/') //Should be changed to a generic variable later
@@ -103,7 +99,6 @@ describe('Chart Generation Tests', () => {
       }
     
       //Populate variables section of graph with numbers. Done in a very icky way because they're auto-generated buttons w    ith no discernable label
->>>>>>> refs/remotes/origin/justin
       //Would absolutely go better in a loop but I couldn't find a pattern in the y-value nums
       cy.get(`:nth-child(${4}) > .x-value-input`).type(1);
       cy.get(`:nth-child(${5}) > .y-value-input`).type(3);
@@ -115,7 +110,6 @@ describe('Chart Generation Tests', () => {
       cy.get(`:nth-child(${11}) > .y-value-input`).type(25);
       cy.get(`:nth-child(${12}) > .x-value-input`).type(5);
       cy.get(`:nth-child(${13}) > .y-value-input`).type(40);
-<<<<<<< HEAD
 
      // Generates and saves the chart
     cy.findByRole("button", {name: "Generate chart"}).click();
@@ -131,7 +125,6 @@ describe('Chart Generation Tests', () => {
     cy.findByLabelText('Y label').should('have.value', 'Height');
   })
 })
-=======
     
       // Generates the chart and checks it exists on the scatter plot page
       cy.findByRole("button", {name: "Generate chart"}).click();
@@ -147,4 +140,3 @@ describe('Chart Generation Tests', () => {
       cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present 
   })
 })
->>>>>>> refs/remotes/origin/justin
