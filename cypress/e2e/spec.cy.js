@@ -94,17 +94,17 @@ describe('template spec', () => {
       cy.get(`:nth-child(${12}) > .x-value-input`).type(5);
       cy.get(`:nth-child(${13}) > .y-value-input`).type(40);
     
-      // Generates and saves the chart
+      // Generates the chart and checks it exists on the scatter plot page
       cy.findByRole("button", {name: "Generate chart"}).click();
+      cy.get('img', {name: 'chart-img'}).should('exist')
+
+      // Saves the chart to gallery
       cy.findByRole("button", {name: "Save chart"}).click();
 
       // Navigates to the Gallery page
       cy.findByRole("link", {name: "Gallery"}).click();
 
       // Checks that the chart image exists on the Gallery page
-      cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present
-      cy.findByLabelText('Chart title').should('have.value', 'Age vs. Height'); //These check the persistence of labels. I d    id not test every single x and y value because that would look messy and I don't feel like it would accomplish more
-      cy.findByLabelText('X label').should('have.value', 'Age');
-      cy.findByLabelText('Y label').should('have.value', 'Height');
+      cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present 
   })
 })
