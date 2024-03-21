@@ -1,6 +1,6 @@
-describe('template spec', () => {
+describe('Chart Generation Tests', () => {
   it('Generate chart', () => {
-    cy.visit('http://localhost:8080') //Should be changed to a generic variable later
+    cy.visit('/') //Should be changed to a generic variable later
     cy.findByText("Line").click()
     cy.findByLabelText('Chart title').type('Cats vs. Dogs');
     cy.findByLabelText('X label').type('Cats');
@@ -33,7 +33,7 @@ describe('template spec', () => {
   it('Check persistence of chart data on new page', () => {
 
     //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
-    cy.visit('http://localhost:8080') //Should be changed to a generic variable later
+    cy.visit('/') //Should be changed to a generic variable later
     cy.findByText("Line").click()
     cy.findByLabelText('Chart title').type('Cats vs. Dogs');
     cy.findByLabelText('X label').type('Cats');
