@@ -98,3 +98,4 @@ describe('Chart Generation Tests', () => {
       // Checks that the chart image exists on the Gallery page
       cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present 
   })
+})
