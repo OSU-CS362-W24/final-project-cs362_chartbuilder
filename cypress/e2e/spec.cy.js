@@ -55,7 +55,9 @@ function setup_ScatterChart(){
   cy.findByRole("button", {name: "Generate chart"}).click();
 }
 
+
 describe('Chart Generation Tests', () => {
+  
   it('Generate chart', () => {
     cy.visit('/')
     setup_LineChart()
@@ -96,4 +98,3 @@ describe('Chart Generation Tests', () => {
       // Checks that the chart image exists on the Gallery page
       cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present 
   })
-})
