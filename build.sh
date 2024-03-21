@@ -6,4 +6,4 @@
 
 mkdir build/
 rm -rf build/*
-cp -r src/*.html src/*.css src/bar src/chartBuilder src/gallery src/lib src/line src/scatter build/
+cp dist/*.html dist/*.js build/
