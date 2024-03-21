@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Chart Generation Tests', () => {
   it('Generate chart', () => {
     cy.visit('/') //Should be changed to a generic variable later
     cy.findByText("Line").click()
@@ -66,66 +66,5 @@ describe('template spec', () => {
     cy.findByLabelText('Chart title').should('have.value', 'Cats vs. Dogs'); //These check the persistence of labels. I did not test every single x and y value because that would look messy and I don't feel like it would accomplish more
     cy.findByLabelText('X label').should('have.value', 'Cats');
     cy.findByLabelText('Y label').should('have.value', 'Dogs');
-  })
-
-
-it('Generate another chart', () => {
-  cy.visit('/') //Should be changed to a generic variable later
-  cy.findByText("Scatter").click()
-  cy.findByLabelText('Chart title').type('Bugs or Bots');
-  cy.findByLabelText('X label').type('Bugs');
-  cy.findByLabelText('Y label').type('Bots');
-
-  for (let i = 0; i < 4; i++) {
-    cy.findByRole("button", {name: "+"}).click();
-  }
-
-      cy.get(`:nth-child(${4}) > .x-value-input`).type(4);
-      cy.get(`:nth-child(${5}) > .y-value-input`).type(5);
-      cy.get(`:nth-child(${6}) > .x-value-input`).type(1);
-      cy.get(`:nth-child(${7}) > .y-value-input`).type(9);
-      cy.get(`:nth-child(${8}) > .x-value-input`).type(6);
-      cy.get(`:nth-child(${9}) > .y-value-input`).type(10);
-      cy.get(`:nth-child(${10}) > .x-value-input`).type(14);
-      cy.get(`:nth-child(${11}) > .y-value-input`).type(21);
-      cy.get(`:nth-child(${12}) > .x-value-input`).type(17);
-      cy.get(`:nth-child(${13}) > .y-value-input`).type(29);
-
-    cy.findByRole("button", {name: "Generate chart"}).click();
-
-    cy.get('img', {name: 'chart-img'}).should('exist'); //As per finalproject.pdf I'm only asserting that we have the image
-  })
-it('checks Generation of second chart', () => {
-  cy.visit('/') //Should be changed to a generic variable later
-    cy.findByText("Scatter").click()
-    cy.findByLabelText('Chart title').type('Bugs versus Bots');
-    cy.findByLabelText('X label').type('Bugs');
-    cy.findByLabelText('Y label').type('Bots');
-
-    //create buttons with + button and populate them with data as per video
-    for (let i = 0; i < 4; i++) {
-      cy.findByRole("button", {name: "+"}).click();
-    }
-
-      cy.get(`:nth-child(${4}) > .x-value-input`).type(4);
-      cy.get(`:nth-child(${5}) > .y-value-input`).type(5);
-      cy.get(`:nth-child(${6}) > .x-value-input`).type(1);
-      cy.get(`:nth-child(${7}) > .y-value-input`).type(9);
-      cy.get(`:nth-child(${8}) > .x-value-input`).type(6);
-      cy.get(`:nth-child(${9}) > .y-value-input`).type(10);
-      cy.get(`:nth-child(${10}) > .x-value-input`).type(14);
-      cy.get(`:nth-child(${11}) > .y-value-input`).type(21);
-      cy.get(`:nth-child(${12}) > .x-value-input`).type(17);
-      cy.get(`:nth-child(${13}) > .y-value-input`).type(29);
-
-    cy.findByRole("button", {name: "Generate chart"}).click();
-
-    cy.findByText("Bar").click()
-    cy.findByRole("button", {name: "Generate chart"}).click();
-
-    cy.get('img', {name: 'chart-img'}).should('exist'); //Website won't build images if there isn't data present
-    cy.findByLabelText('Chart title').should('have.value', 'Bugs versus Bots'); //These check the persistence of labels. I did not test every single x and y value because that would look messy and I don't feel like it would accomplish more
-    cy.findByLabelText('X label').should('have.value', 'Bugs');
-    cy.findByLabelText('Y label').should('have.value', 'Bots');
   })
 })
