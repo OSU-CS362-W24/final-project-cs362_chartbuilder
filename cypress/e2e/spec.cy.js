@@ -106,5 +106,5 @@ describe('template spec', () => {
       cy.findByLabelText('Chart title').should('have.value', 'Age vs. Height'); //These check the persistence of labels. I d    id not test every single x and y value because that would look messy and I don't feel like it would accomplish more
       cy.findByLabelText('X label').should('have.value', 'Age');
       cy.findByLabelText('Y label').should('have.value', 'Height');
-      })
+  })
 })
