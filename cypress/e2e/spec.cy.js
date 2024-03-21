@@ -67,6 +67,7 @@ describe('Chart Generation Tests', () => {
     cy.findByLabelText('X label').should('have.value', 'Cats');
     cy.findByLabelText('Y label').should('have.value', 'Dogs');
   })
+  
 
   it('Check that a chart can be saved to the gallery', () => {
       //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
