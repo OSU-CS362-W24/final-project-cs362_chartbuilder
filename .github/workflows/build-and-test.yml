@@ -21,8 +21,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: index.html
-          path: dist
+          path: build
       - if: ${{ inputs.upload-pages-artifact }}
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist/
+          path: build/
