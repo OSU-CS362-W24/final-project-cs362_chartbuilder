@@ -71,21 +71,6 @@ describe('Chart Generation Tests', () => {
 
 
   it('Check that a chart can be saved to the gallery', () => {
-
-    //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
-    cy.visit('/') //Should be changed to a generic variable later
-    cy.findByText("Scatter").click()
-    cy.findByLabelText('Chart title').type('Age vs. Height');
-    cy.findByLabelText('X label').type('Age');
-    cy.findByLabelText('Y label').type('Height');
-
-    //create buttons with + button and populate them with data as per video
-    for (let i = 0; i < 4; i++) {
-      cy.findByRole("button", {name: "+"}).click();
-    }
-
-      //Populate variables section of graph with numbers. Done in a very icky way because they're auto-generated buttons with no discernable label
-  it('Check that a chart can be saved to the gallery', () => {
       //If you're seeing this as a block of code and not as a function then please pretend. I'll fix it later :)
       cy.visit('/') //Should be changed to a generic variable later
       cy.findByText("Scatter").click()
@@ -124,7 +109,6 @@ describe('Chart Generation Tests', () => {
     cy.findByLabelText('X label').should('have.value', 'Age');
     cy.findByLabelText('Y label').should('have.value', 'Height');
   })
-})
     
       // Generates the chart and checks it exists on the scatter plot page
       cy.findByRole("button", {name: "Generate chart"}).click();
